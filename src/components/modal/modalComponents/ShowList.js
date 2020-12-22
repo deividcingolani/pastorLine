@@ -1,11 +1,31 @@
-export default function ShowList(contacts) {
+export function ShowList({
+  setDetailedModal,
+  setContactSelected,
+  options,
+  status,
+}) {
+  const { contacts } = options;
+  let myArray = [];
+  for (const key in contacts) {
+    myArray.push([key, contacts[key]]);
+  }
   return (
     <ul className="list-group">
-      <li className="list-group-item">Cras justo odio</li>
-      <li className="list-group-item">Dapibus ac facilisis in</li>
-      <li className="list-group-item">Morbi leo risus</li>
-      <li className="list-group-item">Porta ac consectetur ac</li>
-      <li className="list-group-item">Vestibulum at eros</li>
+      {myArray.map((contact, index) => {
+        return (
+          <li
+            className="list-group-item"
+            onClick={() => {
+              setDetailedModal(true);
+              console.log(index);
+              setContactSelected(myArray[index][1]);
+            }}
+            key={index}
+          >
+            {contact[1].first_name + " " + contact[1].last_name}
+          </li>
+        );
+      })}
     </ul>
   );
 }

@@ -1,7 +1,7 @@
-import styles from "../styles.module.scss";
 import React from "react";
+import styles from "../styles.module.scss";
 
-export function checkbox() {
+export function Checkbox() {
   return (
     <div className={styles.checkBox}>
       <input
@@ -11,7 +11,7 @@ export function checkbox() {
         id="defaultCheck1"
       />
       <label className="form-check-label" htmlFor="defaultCheck1">
-        Default checkbox
+        Only even
       </label>
     </div>
   );

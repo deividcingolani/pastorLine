@@ -1,13 +1,16 @@
 import { ButtonClose } from "./ButtonClose";
 import styles from "../styles.module.scss";
+import { Input } from "./Input";
 
-export function DetailedContact(
+export function DetailedContact({
   showModal,
   detailedModal,
   handleChangeUrl,
   setDetailedModal,
-  inputStyle
-) {
+  inputStyle,
+  contactSelected,
+}) {
+  console.log(contactSelected);
   return (
     <div
       className={["modal fade", showModal && detailedModal ? "show" : ""].join(
@@ -21,9 +24,41 @@ export function DetailedContact(
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">
-              Detailed of Contact
-            </h5>
+            <div className={styles.inputs}>
+              <Input
+                inputName={"Name"}
+                label="Name"
+                disabled={"true"}
+                defaultValue={
+                  contactSelected.first_name + " " + contactSelected.last_name
+                }
+              />
+              <Input
+                inputName={"email"}
+                label="Email"
+                disabled={"true"}
+                defaultValue={contactSelected.email}
+              />
+              <Input
+                inputName={"country"}
+                label="Country"
+                disabled={"true"}
+                defaultValue={contactSelected.country.iso}
+              />
+              <Input
+                inputName={"Email"}
+                label="Email"
+                disabled={"true"}
+                defaultValue={contactSelected.email}
+              />
+              <Input
+                inputName={"phoneNumber"}
+                label="Phone Number"
+                disabled={"true"}
+                defaultValue={contactSelected.phone_number}
+              />
+            </div>
+
             <ButtonClose
               buttonName={"X"}
               btnClose={"btn-close"}
